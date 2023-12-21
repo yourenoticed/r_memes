@@ -7,7 +7,7 @@ class MemeParser():
     def get_memes(self, start_id, sr_children) -> list:
         memes = list()
         for child in sr_children:
-            if child["data"]["post_hint"] == "image":
+            if "data" in child and "post_hint" in child["data"] and child["data"]["post_hint"] == "image":
                 memes.append(self.get_meme(self, start_id, child["data"]))
                 start_id += 1
         return memes
